@@ -56,6 +56,8 @@ end
 local courseToml = file.read("course.toml")
 local courseConfig = TOML.parse(courseToml, {strict=false})
 
+print("Scafolding course:",courseConfig[courseConfig["defaultLanguage"]]["name"])
+
 for k, v in pairs(courseConfig) do 
     -- Skip `defaultLanguage` key, all other course.toml keys
     -- are language entries which should hold flow elements.
