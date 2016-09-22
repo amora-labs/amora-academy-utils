@@ -14,6 +14,11 @@
 -- passing a parameter called `course` passing then
 -- path to the folder where `course.toml` is.
 --
+-- REQUIREMENTS:
+--  luaFileSystem
+--  lua-toml
+--  penlight
+--
 ---------------------------------------------------
 
 require "pl" -- injects all penlight modules in global
