@@ -85,3 +85,20 @@ for k, v in pairs(courseConfig) do
 
     ::fim::
 end
+
+---------------------------------------------------------
+-- Each course will end up living in its own git repo
+-- So, generate a README.md from content of course.toml
+---------------------------------------------------------
+local readmeTemplate = text.Template([[
+    # ${title}
+    ${description}
+]])
+
+file.write("README.md", readmeTemplate:substitute {
+    title = courseConfig[courseConfig["defaultLanguage"]]["name"],
+    description = courseConfig[courseConfig["defaultLanguage"]]["blurb"]
+})
+
+
+
