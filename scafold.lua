@@ -57,11 +57,16 @@ local courseToml = file.read("course.toml")
 local courseConfig = TOML.parse(courseToml, {strict=false})
 
 for k, v in pairs(courseConfig) do 
+    -- Skip `defaultLanguage` key, all other course.toml keys
+    -- are language entries which should hold flow elements.
     if k == "defaultLanguage" then
         goto fim
     end 
 
     if courseConfig[k]["flow"] ~= nil then
+        -- pick the list of paths on `flow` and create
+        -- all folders needed and also place an empty file
+        -- for all files needed.
         for i,arquivo in pairs(courseConfig[k]["flow"]) do
             dir.makepath(path.dirname(arquivo))
             file.write(arquivo, "")
