@@ -93,6 +93,9 @@ end
 local readmeTemplate = text.Template([[
     # ${title}
     ${description}
+
+    --
+    [Amora Academy](https://amora.academy)
 ]])
 
 file.write("README.md", readmeTemplate:substitute {
