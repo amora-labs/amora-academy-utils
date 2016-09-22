@@ -68,9 +68,11 @@ for k, v in pairs(courseConfig) do
         -- all folders needed and also place an empty file
         -- for all files needed.
         for i,arquivo in pairs(courseConfig[k]["flow"]) do
-            dir.makepath(path.dirname(arquivo))
-            file.write(arquivo, "")
-            print("Created:", arquivo)
+            if not path.exists(arquivo) then
+                dir.makepath(path.dirname(arquivo))
+                file.write(arquivo, "")
+                print("Created:", arquivo)
+            end
         end
     end
 
